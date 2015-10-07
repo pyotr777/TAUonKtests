@@ -1,6 +1,7 @@
 CC = mpiFCCpx
 CFLAGS = -Kfast,parallel
 PROG =  bones_mpi.exe
+CTPROG = bones_mpi-comp.exe
 SPROG = bones_mpi-s.exe
 TPROG = bones_mpi-t.exe
 TSPROG= bones_mpi-ts.exe
@@ -9,6 +10,7 @@ CCS = scorep --user $(CC)
 CCT = tau_cxx.sh
 TFLAGS="-tau_makefile=$(TAU)/Makefile.tau-mpi-pdt-fujitsu"
 SCRFLAGS="-tau_makefile=$(TAU)/Makefile.tau-mpi-pdt-scorep-fujitsu"
+TAUCOMPINSTR="-tau_options=-optCompInst"
 
 all: $(PROG)
 
@@ -20,6 +22,13 @@ tau: $(TPROG)
 $(TPROG): $(SRC)
 	$(info TAU native instrumentation)
 	$(CCT) $(TFLAGS) $(SRC) -o $(TPROG)
+
+tau-comp: $(CTPROG)
+
+$(CTPROG): $(SRC)
+	$(info TAU compiler-based instrumentation)
+	$(CCT) $(TAUCOMPINSTR) $(TFLAGS) $(SRC) -o $(CTPROG)
+
 
 tauscorep: $(TSPROG)
 
