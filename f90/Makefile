@@ -1,6 +1,7 @@
 CC = mpifrtpx
 CFLAGS = -Kfast,parallel
 PROG =  ring.exe
+CTPROG = ring-comp.exe
 SPROG = ring-s.exe
 TPROG = ring-t.exe
 TSPROG= ring-ts.exe
@@ -9,6 +10,7 @@ CCS = scorep --user $(CC)
 CCT = tau_f90.sh
 TFLAGS="-tau_makefile=$(TAU)/Makefile.tau-mpi-pdt-fujitsu"
 SCRFLAGS="-tau_makefile=$(TAU)/Makefile.tau-mpi-pdt-scorep-fujitsu"
+TAUCOMPINSTR="-tau_options=-optCompInst"
 
 all: $(PROG)
 
@@ -20,6 +22,12 @@ tau: $(TPROG)
 $(TPROG): $(SRC)
 	$(info TAU native instrumentation)
 	$(CCT) $(TFLAGS) $(SRC) -o $(TPROG)
+
+tau-comp: $(CTPROG)
+
+$(CTPROG): $(SRC)
+	$(info TAU compiler-based instrumentation)
+	$(CCT) $(TAUCOMPINSTR) $(TFLAGS) $(SRC) -o $(CTPROG)
 
 tauscorep: $(TSPROG)
 

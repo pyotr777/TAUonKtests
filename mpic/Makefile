@@ -1,14 +1,16 @@
 CC = mpifccpx
 CFLAGS = -Kfast,parallel
 PROG =  mpic.exe
+CTPROG = mpic-comp.exe
 SPROG = mpic-s.exe
 TPROG = mpic-t.exe
 TSPROG= mpic-ts.exe
 SRC= C_MPI.c
-CCS = scorep --user $(CC)
+CCS = scorep --static --user $(CC)
 CCT = tau_cc.sh
 TFLAGS="-tau_makefile=$(TAU)/Makefile.tau-mpi-pdt-fujitsu"
 SCRFLAGS="-tau_makefile=$(TAU)/Makefile.tau-mpi-pdt-scorep-fujitsu"
+TAUCOMPINSTR="-tau_options=-optCompInst"
 
 all: $(PROG)
 
@@ -20,6 +22,14 @@ tau: $(TPROG)
 $(TPROG): $(SRC)
 	$(info TAU native instrumentation)
 	$(CCT) $(TFLAGS) $(SRC) -o $(TPROG)
+
+
+tau-comp: $(CTPROG)
+
+$(CTPROG): $(SRC)
+	$(info TAU compiler-based instrumentation)
+	$(CCT) $(TAUCOMPINSTR) $(TFLAGS) $(SRC) -o $(CTPROG)
+
 
 tauscorep: $(TSPROG)
 

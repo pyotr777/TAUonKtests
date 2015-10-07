@@ -1,2 +1,7 @@
 .*
 !.gitignore
+*.exe
+*.out
+*.o
+*.txt
+traces/

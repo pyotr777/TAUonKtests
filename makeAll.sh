@@ -2,7 +2,7 @@
 # Run make commands in given directories with set targets
 # 2015 Bryzgalov Peter @ AICS RIKEN
 
-targets=( tau tauscorep scorep )
+targets=( tau tau-comp )
 directs=( f90 mpic mpic++ )
 if [ $1 ]
 then
