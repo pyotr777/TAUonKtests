@@ -3,7 +3,7 @@
 # 2015 Bryzgalov Peter @ AICS RIKEN
 
 targets=( clean tau tau-comp )
-directs=( f90 mpic mpic++ )
+directs=( f90 mpic mpic++ mpic++bones )
 if [ $1 ]
 then
     if [ $1 == "clean" ]

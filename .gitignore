@@ -4,4 +4,6 @@
 *.out
 *.o
 *.txt
-traces/
+job.*
+trace*/
+profile*/

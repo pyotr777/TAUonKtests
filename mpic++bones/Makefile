@@ -43,4 +43,5 @@ $(SPROG): $(SRC)
 	$(CCS) $(SRC) -o $(SPROG)
 	
 clean: 
-	rm -f *.exe *.o* *.i* *.sh.e* *.sh.i* *.sh.o* *.sh.s* *script.e* *script.i* *script.s* profile* tautrace* events* *.log *file_for_script *.edf *.slog2 *.trc
+	rm -f *.exe *.o* *.i* *.sh.e* *.sh.i* *.sh.o* *.sh.s* *script.e* *script.i* *script.s* profile* tautrace* events* *.log *file_for_script *.edf *.slog2 *.trc 
+	rm -rf trace_dir*
