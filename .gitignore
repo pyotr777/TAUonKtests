@@ -4,6 +4,9 @@
 *.out
 *.o
 *.txt
+**/Makefile
 job.*
-trace*/
-profile*/
+**/*trace*/
+**/*profile*/
+test*/
+
