@@ -1,3 +1,0 @@
-export SCOREP_LIB=$(pwd)/scorep/1.4/lib
-export PATH="$SCOREP_LIB:$PATH"
-export LD_LIBRARY_PATH="$SCOREP_LIB:$LD_LIBRARY_PATH"

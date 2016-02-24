@@ -2,8 +2,11 @@
 # Run make commands in given directories with set targets
 # 2015 Bryzgalov Peter @ AICS RIKEN
 
-targets=( clean tau tau-comp )
-directs=( f90 mpic mpic++ mpic++bones )
+# Possible targets: clean tau tau-comp tauscorep scorep
+# See makeMakefile.sh for details
+
+source ./config.sh
+
 if [ $1 ]
 then
     if [ $1 == "clean" ]
