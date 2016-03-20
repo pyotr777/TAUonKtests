@@ -8,12 +8,12 @@
 source ./config.sh
 
 # Set to nonzero to run Score-P instrumented jobs
-pause=3
+pause=15
 
 read -rd '' usage << EOF
 Execute profiling and tracing jobs on FX10
 from designated directories.
-(C) 2015 Bryzgalov Peter @ RIKEN AICS
+(C) 2015-2016 Bryzgalov Peter @ RIKEN AICS
 
 Usage:
 runAll.sh jobscripts    - prepare job scripts for all jobs.
@@ -45,7 +45,8 @@ if [ "$1" == "jobscripts" ]; then
 	#PJM --rsc-list "rscgrp=small"
 	#PJM --rsc-list "node=2x3x2"
 	#PJM --rsc-list "elapse=00:10:00"
-	# . /work/system/Env_base
+	#PJM --stg-transfiles all
+	#PJM --mpi "use-rankdir"
 	COMEOF
 
 	for i in $(seq 0 ${#directs})
@@ -61,14 +62,18 @@ if [ "$1" == "jobscripts" ]; then
 			# TAU native Profiling jobs
 			echo "TAU"
 			read -rd '' tau_profiling <<- TPROFEOF
+			#PJM --stgin "rank=* ./$exe-t.exe %r:./"
+			#PJM --stgout "rank=* ./profile* ./TAU_native_profiles/"
+	        . /work/system/Env_base
 			export TAU_PROFILE="1"
 			export TAU_TRACE="0"
-			export PROFILEDIR="TAU_native_profiles"
-			mkdir \$PROFILEDIR
+			export PROFILEDIR=""
+            mkdir TAU_native_profiles
 			pwd
 			ls -la
 			env | grep -i tau
 			mpiexec ./$exe-t.exe
+            ls -l
 			TPROFEOF
 		
 			echo -e "$common_part" > job.tau.profile.sh
@@ -77,15 +82,18 @@ if [ "$1" == "jobscripts" ]; then
 
 			# TAU native Tracing jobs
 			read -rd '' tau_tracing <<- TTRCEOF		
-			export TAU_PROFILE="0"
+			#PJM --stgin "rank=* ./$exe-t.exe %r:./"
+			#PJM --stgout "rank=* ./*.trc ./TAU_native_traces/"
+			#PJM --stgout "rank=* ./*.edf ./TAU_native_traces/"
+			. /work/system/Env_base
+            export TAU_PROFILE="0"
 			export TAU_TRACE="1"
-			export TRACEDIR="TAU_native_traces"
-			mkdir \$TRACEDIR
+			export TRACEDIR=""
+            mkdir TAU_native_traces
 			pwd
 			ls -la
-			env | grep -i tau
 			mpiexec ./$exe-t.exe
-			ls -la tautrace
+			ls -l
 			TTRCEOF
 			echo -e "$common_part" > job.tau.trace.sh
 			echo -e "$tau_tracing" >> job.tau.trace.sh
@@ -95,14 +103,17 @@ if [ "$1" == "jobscripts" ]; then
 			# TAU compiler-based Profiling jobs
 			echo "TAU compiler-based"
 			read -rd '' tau_profiling <<- TPROFCOMPEOF
-			export TAU_PROFILE="1"
+			#PJM --stgin "rank=* ./$exe-comp.exe %r:./"
+			#PJM --stgout "rank=* ./profile* ./TAU_comp_profiles"
+			. /work/system/Env_base
+            export TAU_PROFILE="1"
 			export TAU_TRACE="0"
-			export PROFILEDIR="TAU_comp_profiles"
-			mkdir \$PROFILEDIR
+			export PROFILEDIR=""
+            mkdir TAU_comp_profiles
 			pwd
 			ls -la
-			env | grep -i tau
 			mpiexec ./$exe-comp.exe
+            ls -l
 			TPROFCOMPEOF
 			
 			echo -e "$common_part" > job.tau.comp.profile.sh
@@ -110,16 +121,22 @@ if [ "$1" == "jobscripts" ]; then
 			
 
 			# TAU compiler-based Tracing jobs
+            job_exe="$exe-comp.exe"
+            job_dir="TAU_comp_traces"
 			read -rd '' tau_tracing <<- TTRCEOF
+			#PJM --stgin "rank=* ./$job_exe %r:./"
+			#PJM --stgout "rank=* ./*.trc ./$job_dir/"
+			#PJM --stgout "rank=* ./*.edf ./$job_dir/"
+			. /work/system/Env_base
 			export TAU_PROFILE="0"
 			export TAU_TRACE="1"
-			export TRACEDIR="TAU_comp_traces"
-			mkdir \$TRACEDIR
+			export TRACEDIR=""
+            mkdir $job_dir
 			pwd
 			ls -la
 			env | grep -i tau
 			mpiexec ./$exe-comp.exe
-			ls -la tautrace
+			ls -l
 			TTRCEOF
 			
 			echo -e "$common_part" > job.tau.comp.trace.sh
@@ -129,22 +146,26 @@ if [ "$1" == "jobscripts" ]; then
 		if [[ $(containsElement "tauscorep" "${targets[@]}") ]]; then
 			# TAU with Score-P
 			echo "TAU+Score-P"
-			trace_dir="tau_scorep"
+            job_exe="$exe-ts.exe"
+            job_dir="tau_scorep"
 			read -rd '' tau_scorep <<- TSCORPEOF
+			#PJM --stgin "rank=* ./$job_exe %r:./"
+			#PJM --stgout-dir "rank=* ./$job_dir ./$job_dir recursive=2"
+			. /work/system/Env_base
 			export TAU_PROFILE="1"
 			export TAU_TRACE="1"
 			export TAU_MAKEFILE=\$TAU/Makefile.tau-mpi-pdt-scorep-fujitsu
 			export SCOREP_PROFILING_FORMAT=CUBE4
 			export SCOREP_ENABLE_TRACING=1
-			export SCOREP_EXPERIMENT_DIRECTORY=tau_scorep_sum
+			export SCOREP_EXPERIMENT_DIRECTORY="$job_dir"
 			pwd
 			ls -la
 			env | grep -i tau
-			mpiexec ./$exe-ts.exe
+			mpiexec ./$job_exe
 			ls -la
-			ls -l tau_scorep_sum
-			ls -l tau_scorep_sum/tau
-			ls -l tau_scorep_sum/traces
+			ls -l $job_dir
+			ls -l $job_dir/tau
+			ls -l $job_dir/traces
 			TSCORPEOF
 			
 			echo -e "$common_part" > job.tau-scorep.sh
@@ -154,21 +175,25 @@ if [ "$1" == "jobscripts" ]; then
 		if [[ $(containsElement "scorep" "${targets[@]}") ]]; then
 			# Score-P
 			echo "Score-P"
-			trace_dir="scorep_sum"
-			read -rd '' scorep <<- SCORPEOF
+			job_dir="scorep"
+			job_exe="$exe-s.exe"
+            read -rd '' scorep <<- SCORPEOF
+			#PJM --stgin "rank=* ./$job_exe %r:./"
+			#PJM --stgout-dir "rank=* ./$job_dir ./$job_dir recursive=2"
+			. /work/system/Env_base
 			export TAU_PROFILE=1
 			export TAU_TRACE=1
 			export SCOREP_PROFILING_FORMAT=CUBE4
 			export SCOREP_ENABLE_TRACING=1
-			export SCOREP_EXPERIMENT_DIRECTORY=scorep_sum
+			export SCOREP_EXPERIMENT_DIRECTORY="$job_dir"
 			pwd
 			ls -la
 			env | grep -i tau
-			mpiexec ./$exe-s.exe
+			mpiexec ./$job_exe
 			ls -la
-			ls -l scorep_sum
-			ls -l scorep_sum/tau
-			ls -l scorep_sum/traces
+			ls -l $job_dir
+			ls -l $job_dir/tau
+			ls -l $jib_dir/traces
 			SCORPEOF
 			
 			echo -e "$common_part" > job.scorep.sh

@@ -54,7 +54,7 @@ CTPROG = $namebase-comp.exe
 # ScoreP only
 SPROG = $namebase-s.exe
 # TAU-ScoreP
-TSPROG= $namebase-ts.exe
+TSPROG = $namebase-ts.exe
 SRC= $2
 CCS = scorep --user \$(CC)
 CCT = $tc
@@ -114,9 +114,9 @@ fi
 
 for i in $(seq 0 ${#directs}); do
 	direct=${directs[$i]}
+    echo "Proceed to $direct"
 	source=${sources[$i]}
 	lang=${langs[$i]}
 	make_one_makefile $lang $source
 	mv Makefile $direct/
-	echo "Created Makefile for $direct"
 done
