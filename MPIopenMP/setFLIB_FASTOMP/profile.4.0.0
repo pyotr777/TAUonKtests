@@ -1,0 +1,42 @@
+35 templated_functions_MULTI_TIME
+# Name Calls Subrs Excl Incl ProfileCalls # <metadata><attribute><name>Metric Name</name><value>TIME</value></attribute><attribute><name>CWD</name><value>/work/run.sh.5099969/4</value></attribute><attribute><name>Executable</name><value>/work/run.sh.5099969/4/a.out</value></attribute><attribute><name>FUJITSU Coords</name><value>(1)</value></attribute><attribute><name>Hostname</name><value>f04-013</value></attribute><attribute><name>Local Time</name><value>2016-03-07T19:02:07+09:00</value></attribute><attribute><name>MPI Processor Name</name><value>f04-013</value></attribute><attribute><name>Node Name</name><value>f04-013</value></attribute><attribute><name>Starting Timestamp</name><value>1457344927027121</value></attribute><attribute><name>Timestamp</name><value>1457344927027354</value></attribute><attribute><name>UTC Time</name><value>2016-03-07T10:02:07Z</value></attribute><attribute><name>pid</name><value>13488</value></attribute><attribute><name>tid</name><value>13488</value></attribute></metadata>
+".TAU application" 1 1 123 51263604 0 GROUP="TAU_USER" 
+"JACOBI_MPIOMP [{jacobi.pomp.f90} {2,1}-{135,11}]" 1 6007 161911 51263481 0 GROUP="TAU_DEFAULT" 
+"MPI_Init()  " 1 0 1246569 1246569 0 GROUP="MPI" 
+"MPI_Comm_size()  " 2004 0 6796 6796 0 GROUP="MPI" 
+"MPI_Comm_rank()  " 2004 0 5997 5997 0 GROUP="MPI" 
+"READ_PARAMS [{jacobi.pomp.f90} {139,1}-{179,26}]" 1 6 81 299 0 GROUP="TAU_DEFAULT" 
+"MPI_Bcast()  " 4 0 212 212 0 GROUP="MPI" 
+"GET_INDICES [{jacobi.pomp.f90} {183,1}-{202,26}]" 1 2 11 17 0 GROUP="TAU_DEFAULT" 
+"INIT_FIELDS [{jacobi.pomp.f90} {206,1}-{256,26}]" 1 2 477 15635 0 GROUP="TAU_DEFAULT" 
+"parallel (parallel fork/join) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <173, 187>]" 1 1 122 14515 0 GROUP="OpenMP" 
+"parallel (parallel begin/end) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <173, 187>]" 1 3 457 14393 0 GROUP="OpenMP" 
+"do (loop body) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <174, 178>]" 1 0 6210 6210 0 GROUP="OpenMP" 
+"do (loop body) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <182, 186>]" 1 0 7615 7615 0 GROUP="OpenMP" 
+"parallel (barrier enter/exit) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <173, 187>]" 1 0 111 111 0 GROUP="OpenMP" 
+"SET_BC [{jacobi.pomp.f90} {260,1}-{358,21}]" 1001 3003 20350 90250 0 GROUP="TAU_DEFAULT" 
+"paralleldo (parallel fork/join) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <230, 235>]" 1001 1001 16403 63072 0 GROUP="OpenMP" 
+"paralleldo (parallel begin/end) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <230, 235>]" 1001 1001 8379 46669 0 GROUP="OpenMP" 
+"paralleldo (loop body) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <230, 235>]" 1001 1001 29659 38290 0 GROUP="OpenMP" 
+"paralleldo (barrier enter/exit) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <230, 235>]" 1001 0 8631 8631 0 GROUP="OpenMP" 
+"MPI_Sendrecv()  " 2000 0 114069 114069 0 GROUP="MPI" 
+"paralleldo (parallel fork/join) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <59, 68>]" 1000 1000 19971 17588819 0 GROUP="OpenMP" 
+"paralleldo (parallel begin/end) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <59, 68>]" 1000 1000 9316 17568848 0 GROUP="OpenMP" 
+"paralleldo (loop body) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <59, 68>]" 1000 1000 17548147 17559532 0 GROUP="OpenMP" 
+"paralleldo (barrier enter/exit) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <59, 68>]" 1000 0 11385 11385 0 GROUP="OpenMP" 
+"COMPUTE_DIFF [{jacobi.pomp.f90} {362,1}-{411,27}]" 1000 4000 23429 19253686 0 GROUP="TAU_DEFAULT" 
+"paralleldo (parallel fork/join) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <258, 264>]" 1000 1000 18995 18911360 0 GROUP="OpenMP" 
+"paralleldo (parallel begin/end) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <258, 264>]" 1000 1000 8502 18892365 0 GROUP="OpenMP" 
+"paralleldo (loop body) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <258, 264>]" 1000 1000 18873475 18883863 0 GROUP="OpenMP" 
+"paralleldo (barrier enter/exit) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <258, 264>]" 1000 0 10388 10388 0 GROUP="OpenMP" 
+"MPI_Allreduce()  " 1000 0 312951 312951 0 GROUP="MPI" 
+"paralleldo (parallel fork/join) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <80, 84>]" 1000 1000 19305 12786629 0 GROUP="OpenMP" 
+"paralleldo (parallel begin/end) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <80, 84>]" 1000 1000 9174 12767324 0 GROUP="OpenMP" 
+"paralleldo (loop body) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <80, 84>]" 1000 1000 12746040 12758150 0 GROUP="OpenMP" 
+"paralleldo (barrier enter/exit) [OpenMP location: file:/volume1/home/ra000007/a03106/testcode/MPIopenMP/jacobi.f90 <80, 84>]" 1000 0 12110 12110 0 GROUP="OpenMP" 
+"MPI_Finalize()  " 1 0 6233 6233 0 GROUP="MPI" 
+0 aggregates
+2 userevents
+# eventname numevents max min mean sumsqr
+"Message size for broadcast" 4 4 4 4 64
+"Message size for all-reduce" 1000 4 4 4 16000

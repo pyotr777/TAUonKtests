@@ -1,0 +1,76 @@
+Env_base: K-1.2.0-19
++ mpiexec -np 8 ./bt-mz_B.8
+
+
+ NAS Parallel Benchmarks (NPB3.3-MZ-MPI) - BT-MZ MPI+OpenMP Benchmark
+
+ Number of zones:   8 x   8
+ Iterations: 200    dt:   0.000300
+ Number of active processes:     8
+
+ Use the default load factors with threads
+ Total number of threads:     32  (  4.0 threads/process)
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+
+ Calculated speedup =     31.52
+
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+jwe1041i-s The number of threads cannot be changed when the environment variable FLIB_FASTOMP is TRUE.
+ error occurs at omp_set_num_threads_            loc ffffffff01772da4 offset 0000000000000154 
+ omp_set_num_threads_                at loc ffffffff01772c50 called from loc 0000000000181190 in map_zones_                          line 664 
+ map_zones_                          at loc 000000000017c7c0 called from loc 0000000000130d80 in MAIN__       line 181 
+ MAIN__       at loc 0000000000130600 called from o.s.  
+jwe0903i-u Error number 1041 was detected. Maximum error count exceeded.
+error summary (Fortran)
+error number  error level  error count
+  jwe1041i         s           1      
+total error count = 1
+ error occurs at omp_set_num_threads_            loc ffffffff01772da4 offset 0000000000000154 
+ omp_set_num_threads_                at loc ffffffff01772c50 called from loc 0000000000181190 in map_zones_                          line 664 
+ map_zones_                          at loc 000000000017c7c0 called from loc 0000000000130d80 in MAIN__       line 181 
+ MAIN__       at loc 0000000000130600 called from o.s.  
+jwe0903i-u Error number 1041 was detected. Maximum error count exceeded.
+ error occurs at omp_set_num_threads_            loc ffffffff01772da4 offset 0000000000000154 
+ omp_set_num_threads_                at loc ffffffff01772c50 called from loc 0000000000181190 in map_zones_                          line 664 
+ map_zones_                          at loc 000000000017c7c0 called from loc 0000000000130d80 in MAIN__       line 181 
+ MAIN__       at loc 0000000000130600 called from o.s.  
+jwe0903i-u Error number 1041 was detected. Maximum error count exceeded.
+ error occurs at omp_set_num_threads_            loc ffffffff01772da4 offset 0000000000000154 
+ omp_set_num_threads_                at loc ffffffff01772c50 called from loc 0000000000181190 in map_zones_                          line 664 
+ map_zones_                          at loc 000000000017c7c0 called from loc 0000000000130d80 in MAIN__       line 181 
+ MAIN__       at loc 0000000000130600 called from o.s.  
+jwe0903i-u Error number 1041 was detected. Maximum error count exceeded.
+ error occurs at omp_set_num_threads_            loc ffffffff01772da4 offset 0000000000000154 
+ omp_set_num_threads_                at loc ffffffff01772c50 called from loc 0000000000181190 in map_zones_                          line 664 
+ map_zones_                          at loc 000000000017c7c0 called from loc 0000000000130d80 in MAIN__       line 181 
+ MAIN__       at loc 0000000000130600 called from o.s.  
+jwe0903i-u Error number 1041 was detected. Maximum error count exceeded.
+ error occurs at omp_set_num_threads_            loc ffffffff01772da4 offset 0000000000000154 
+ omp_set_num_threads_                at loc ffffffff01772c50 called from loc 0000000000181190 in map_zones_                          line 664 
+ map_zones_                          at loc 000000000017c7c0 called from loc 0000000000130d80 in MAIN__       line 181 
+ MAIN__       at loc 0000000000130600 called from o.s.  
+jwe0903i-u Error number 1041 was detected. Maximum error count exceeded.
+error summary (Fortran)
+error number  error level  error count
+  jwe1041i         s           1      
+total error count = 1
+error summary (Fortran)
+error number  error level  error count
+error summary (Fortran)
+error number  error level  error count
+  jwe1041i         s           1      
+total error count = 1
+  jwe1041i         s           1      
+total error count = 1
+[ERR.] PLE 0014 plexec The process terminated abnormally.(rank=6)(nid=0x030c0011)(exitstatus=16)(CODE=2032,1966080,4096)
+[ERR.] PLE             The program that the user specified may be illegal or inaccessible on the node.(nid=0x030c0011)
++ ls -l
+total 7240
+-rwxr-xr-x 1 a03106 ra000007 7375033 Mar  4 18:29 bt-mz_B.8
+drwx------ 2 root   root       16384 Mar  4 18:35 lost+found
+-rw-r--r-- 1 a03106 ra000007    6216 Mar  4 18:36 profile.0.0.0

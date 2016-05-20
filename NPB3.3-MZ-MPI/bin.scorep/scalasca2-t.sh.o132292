@@ -1,0 +1,14 @@
++ scalasca -analyze -t mpiexec -np 8 ./bt-mz_B.8
+S=C=A=N: Scalasca 2.2.2 trace collection and analysis
+S=C=A=N: ./scorep_bt-mz_B_8x4_trace experiment archive
+S=C=A=N: Thu Feb 25 11:33:30 2016: Collect start
+/opt/FJSVfxlang/1.2.1/bin/mpiexec -np 8 ./bt-mz_B.8
+[launch output redirected to ./scorep_bt-mz_B_8x4_trace]
+S=C=A=N: Thu Feb 25 11:34:04 2016: Collect done (status=0) 34s
+Error: counting MPI ranks in ./scorep_bt-mz_B_8x4_trace/traces.otf2
+S=C=A=N: Thu Feb 25 11:34:04 2016: Analyze start
+/opt/FJSVfxlang/1.2.1/bin/mpiexec -np 8 /home/S11505/shared/tools/JSC/scalasca/REL-2.2.2-tls/bin/backend/scout.hyb --time-correct ./scorep_bt-mz_B_8x4_trace/traces.otf2
+[launch output redirected to ./scorep_bt-mz_B_8x4_trace/scout.log]
+S=C=A=N: Thu Feb 25 11:34:59 2016: Analyze done (status=0) 55s
+Warning: 109.754MB of analyzed trace data retained in ./scorep_bt-mz_B_8x4_trace/traces!
+S=C=A=N: ./scorep_bt-mz_B_8x4_trace complete.

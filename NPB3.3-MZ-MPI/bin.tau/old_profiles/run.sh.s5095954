@@ -1,0 +1,18 @@
+<Staging Information>
+---(Stage-In  Detail Information)---
+stgin "rank=0 /volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/.d0005095954 ./ confirm=no" 2016-03-04 18:35:00          533("/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/.d0005095954" -> "/work/run.sh.5095954/0/.d0005095954")
+stgin "rank=* ./bt-mz_B.8 %r:./" 2016-03-04 18:29:31      7375033("/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/bt-mz_B.8" -> "/work/run.sh.5095954/[0-3]/bt-mz_B.8")
+stgin "rank=* ./bt-mz_B.8 %r:./" 2016-03-04 18:29:31      7375033("/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/bt-mz_B.8" -> "/work/run.sh.5095954/[4-7]/bt-mz_B.8")
+---(Stage-Out Detail Information)---
+stgout "rank=0 ../.d0005095954_stdout /volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/%n.o5095954" 2016-03-04 18:36:14         5048("/work/run.sh.5095954/.d0005095954_stdout" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/run.sh.o5095954")
+stgout "rank=* %r:./*.* ./" 2016-03-04 18:36:12         6216("/work/run.sh.5095954/0/profile.0.0.0" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/profile.0.0.0")
+stgout "rank=* %r:./*.* ./" 2016-03-04 18:36:11         6219("/work/run.sh.5095954/1/profile.1.0.0" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/profile.1.0.0")
+stgout "rank=* %r:./*.* ./" 2016-03-04 18:36:11         6218("/work/run.sh.5095954/2/profile.2.0.0" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/profile.2.0.0")
+stgout "rank=* %r:./*.* ./" 2016-03-04 18:36:11         6218("/work/run.sh.5095954/3/profile.3.0.0" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/profile.3.0.0")
+stgout "rank=* %r:./*.* ./" 2016-03-04 18:36:12            0("/work/run.sh.5095954/5/profile.5.0.0" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/profile.5.0.0")
+stgout "rank=* %r:./*.* ./" 2016-03-04 18:36:11         6218("/work/run.sh.5095954/6/profile.6.0.0" -> "/volume1/home/ra000007/a03106/TAUonKtests/NPB3.3-MZ-MPI/bin.tau/profile.6.0.0")
+
+------------------------------------------------------
+<Error Information>
+---(Stage-In  Error Information)---
+---(Stage-Out Error Information)---

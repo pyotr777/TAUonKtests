@@ -1,0 +1,21 @@
+SCOUT   Copyright (c) 1998-2015 Forschungszentrum Juelich GmbH
+        Copyright (c) 2009-2014 German Research School for Simulation
+                                Sciences GmbH
+
+Analyzing experiment archive ./scorep_bt-mz_B_8x4_trace/traces.otf2
+
+Opening experiment archive ... done (0.012s).
+Reading definition data    ... done (0.034s).
+Reading event trace data   ... done (1.908s).
+Preprocessing              ... done (1.075s).
+Timestamp correction       ... done (1.104s).
+Analyzing trace data       ... done (44.185s).
+Writing analysis report    ... done (1.176s).
+
+Max. memory usage         : 188.469MB
+
+	# passes        : 1
+	# violated      : 0
+
+Total processing time     : 49.726s
+S=C=A=N: Thu Feb 25 11:34:59 2016: Analyze done (status=0) 55s
