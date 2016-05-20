@@ -112,7 +112,7 @@ if [[ -n "$1" ]]; then
 	make_one_makefile $1 $2
 fi
 
-for i in $(seq 0 ${#directs}); do
+for i in $(seq 0 ${#directs[@]}); do
 	direct=${directs[$i]}
     echo "Proceed to $direct"
 	source=${sources[$i]}
