@@ -111,12 +111,13 @@ if [[ -n "$1" ]]; then
 	echo "Make makefile for $1 and $2"
 	make_one_makefile $1 $2
 fi
-
-for i in $(seq 0 ${#directs[@]}); do
-	direct=${directs[$i]}
-    echo "Proceed to $direct"
+i=0
+for direct in ${directs[@]}; do
+    #echo "Proceed to $direct"
 	source=${sources[$i]}
 	lang=${langs[$i]}
+    echo "$i $direct $source $lang"
 	make_one_makefile $lang $source
 	mv Makefile $direct/
+    ((i++))
 done

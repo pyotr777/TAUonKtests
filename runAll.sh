@@ -64,16 +64,14 @@ if [ "$1" == "jobscripts" ]; then
 			read -rd '' tau_profiling <<- TPROFEOF
 			#PJM --stgin "rank=* ./$exe-t.exe %r:./"
 			#PJM --stgout "rank=* ./profile* ./TAU_native_profiles/"
-	        . /work/system/Env_base
+			. /work/system/Env_base
 			export TAU_PROFILE="1"
 			export TAU_TRACE="0"
-			export PROFILEDIR=""
-            mkdir TAU_native_profiles
 			pwd
 			ls -la
 			env | grep -i tau
 			mpiexec ./$exe-t.exe
-            ls -l
+			ls -l
 			TPROFEOF
 		
 			echo -e "$common_part" > job.tau.profile.sh
@@ -86,10 +84,8 @@ if [ "$1" == "jobscripts" ]; then
 			#PJM --stgout "rank=* ./*.trc ./TAU_native_traces/"
 			#PJM --stgout "rank=* ./*.edf ./TAU_native_traces/"
 			. /work/system/Env_base
-            export TAU_PROFILE="0"
+			export TAU_PROFILE="0"
 			export TAU_TRACE="1"
-			export TRACEDIR=""
-            mkdir TAU_native_traces
 			pwd
 			ls -la
 			mpiexec ./$exe-t.exe
@@ -104,16 +100,14 @@ if [ "$1" == "jobscripts" ]; then
 			echo "TAU compiler-based"
 			read -rd '' tau_profiling <<- TPROFCOMPEOF
 			#PJM --stgin "rank=* ./$exe-comp.exe %r:./"
-			#PJM --stgout "rank=* ./profile* ./TAU_comp_profiles"
+			#PJM --stgout "rank=* ./profile* ./TAU_comp_profiles/"
 			. /work/system/Env_base
-            export TAU_PROFILE="1"
+			export TAU_PROFILE="1"
 			export TAU_TRACE="0"
-			export PROFILEDIR=""
-            mkdir TAU_comp_profiles
 			pwd
 			ls -la
 			mpiexec ./$exe-comp.exe
-            ls -l
+			ls -l
 			TPROFCOMPEOF
 			
 			echo -e "$common_part" > job.tau.comp.profile.sh
@@ -130,8 +124,7 @@ if [ "$1" == "jobscripts" ]; then
 			. /work/system/Env_base
 			export TAU_PROFILE="0"
 			export TAU_TRACE="1"
-			export TRACEDIR=""
-            mkdir $job_dir
+			mkdir $job_dir
 			pwd
 			ls -la
 			env | grep -i tau
