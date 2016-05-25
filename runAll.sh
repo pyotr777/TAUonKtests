@@ -11,7 +11,7 @@ source ./config.sh
 pause=15
 
 read -rd '' usage << EOF
-Execute profiling and tracing jobs on FX10
+Execute profiling and tracing jobs on K
 from designated directories.
 (C) 2015-2016 Bryzgalov Peter @ RIKEN AICS
 
@@ -49,10 +49,10 @@ if [ "$1" == "jobscripts" ]; then
 	#PJM --mpi "use-rankdir"
 	COMEOF
 
-	for i in $(seq 0 ${#directs})
-	do
-		#let i=i1-1
+	i=0
+	for direct in ${directs[@]}; do		
 		source=${sources[$i]}
+		echo "$i $direct $source"
 		IFS="." read -ra nameparts <<< "$source"
 		exe=${nameparts[0]}
 		dir=${directs[$i]}
@@ -193,18 +193,14 @@ if [ "$1" == "jobscripts" ]; then
 			echo -e "$scorep" >> job.scorep.sh			
 		fi
 		cd ..
+		((i++))
 	done
-elif [ "$1" == "clean" ]
-	then
-	for i in $(seq 0 ${#directs})
-	do
-		#let i=i1-1
-		dir=${directs[$i]}
+elif [ "$1" == "clean" ]; then
+	for dir in ${directs[@]}; do	
 		cd $dir
 		echo -e "\e[34m$dir\e[0m"
 		mapfile -t jobfiles <<< "$(ls job.*.sh)"
-		for jobfile in "${jobfiles[@]}" 
-		do
+		for jobfile in "${jobfiles[@]}"; do
 			echo "$dir/$jobfile"
 			rm $jobfile
 			rm *profile*
@@ -218,16 +214,11 @@ elif [ "$1" == "clean" ]
 		done
 		cd ..
 	done
-elif [ "$1" == "run" ]
-	then
-	for i in $(seq 0 ${#directs})
-	do
-		#let i=i1-1
-		dir=${directs[$i]}
+elif [ "$1" == "run" ]; then
+	for dir in ${directs[@]}; do
 		cd $dir
 		mapfile -t jobfiles <<< "$(ls job.*.sh)"
-		for jobfile in "${jobfiles[@]}" 
-		do
+		for jobfile in "${jobfiles[@]}"; do
 			echo "Run $dir/$jobfile"
 			pjsub $jobfile
 			sleep $pause
