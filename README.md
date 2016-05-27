@@ -1,5 +1,7 @@
 # TAU on K tests
 
+`v1.1`
+
 Set of sample programs and tools to test TAU installation on K.
 
 - Tests are for TAU native source-based instrumentation, TAU compiler-based instrumentation,
@@ -18,7 +20,7 @@ Set of sample programs and tools to test TAU installation on K.
  * scorep - Score-P instrumentation
  * tauscorep - TAU + Score-P instrumentation
 
-2. Edit configh.sh to include tests (direcotries) and targets you want to build and test.
+2. Edit configh.sh to include tests (directories) and targets you want to build and test.
  E.g. For f90 (ring.f90) and mpic samples with tau and tau-comp targets config.sh should be like this:
  ```
  directs=(f90 mpic)
