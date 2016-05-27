@@ -65,7 +65,7 @@ program jacobi_mpiomp
       pomp2_ctc_1 )
         !$omp parallel    private(utmp) &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_1)
       call POMP2_Do_enter(pomp2_region_1, &
      pomp2_ctc_1 )
@@ -105,7 +105,7 @@ program jacobi_mpiomp
       pomp2_ctc_2 )
         !$omp parallel    &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_2)
       call POMP2_Do_enter(pomp2_region_2, &
      pomp2_ctc_2 )
@@ -220,7 +220,7 @@ subroutine init_fields(u,f,n,js,je)
       pomp2_ctc_3 )
     !$omp parallel &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_3)
       call POMP2_Do_enter(pomp2_region_4, &
      pomp2_ctc_4 )
@@ -283,7 +283,7 @@ subroutine set_bc(u,n,js,je)
       pomp2_ctc_6 )
         !$omp parallel    &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_6)
       call POMP2_Do_enter(pomp2_region_6, &
      pomp2_ctc_6 )
@@ -310,7 +310,7 @@ subroutine set_bc(u,n,js,je)
       pomp2_ctc_7 )
         !$omp parallel    &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_7)
       call POMP2_Do_enter(pomp2_region_7, &
      pomp2_ctc_7 )
@@ -336,7 +336,7 @@ subroutine set_bc(u,n,js,je)
       pomp2_ctc_8 )
     !$omp parallel    &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_8)
       call POMP2_Do_enter(pomp2_region_8, &
      pomp2_ctc_8 )
@@ -345,7 +345,6 @@ subroutine set_bc(u,n,js,je)
         u(0,j) = ((joff + j) * h)**2
         u(n,j) = ((joff + j) * h)**2 + 1.
     enddo
-
 !$omp end do nowait
       call POMP2_Implicit_barrier_enter(pomp2_region_8,&
       pomp2_old_task)
@@ -355,6 +354,7 @@ subroutine set_bc(u,n,js,je)
       call POMP2_Parallel_end(pomp2_region_8)
 !$omp end parallel
       call POMP2_Parallel_join(pomp2_region_8, pomp2_old_task)
+
 end subroutine set_bc
 
 !----------------------------------------------------------------------
@@ -384,7 +384,7 @@ subroutine compute_diff(u,unew,n,js,je,diffnorm)
       pomp2_ctc_9 )
     !$omp parallel    reduction(+:dnorm) &
   !$omp firstprivate(pomp2_old_task) private(pomp2_new_task) &
-  !$omp num_threads(pomp2_num_threads)
+  !$omp if(pomp2_if) num_threads(pomp2_num_threads)
       call POMP2_Parallel_begin(pomp2_region_9)
       call POMP2_Do_enter(pomp2_region_9, &
      pomp2_ctc_9 )
@@ -410,7 +410,7 @@ subroutine compute_diff(u,unew,n,js,je,diffnorm)
 
 end subroutine compute_diff
 
-      subroutine POMP2_Init_reg_icjd5nqwn351x5_9()
+      subroutine POMP2_Init_reg_432292914_9()
          include 'jacobi.f90.opari.inc'
          call POMP2_Assign_handle( pomp2_region_1, &
          pomp2_ctc_1 )

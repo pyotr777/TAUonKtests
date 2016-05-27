@@ -1,0 +1,240 @@
+
+FORTRAN-lint    Rev 5.00.14-UOR (Revision: 2008-08-04)   27-May-2016  17:01:54 
+
+Default options:  -w -u -O207,276,76,261 --t --x
+Command options:  -D_OPENMP -I/home/ra000007/a03106/TAU/tau-2.25.1/include -f
+                  -Mpdb=pdtf56743.pdb -openmp
+
+
+
+>>> Source analysis:
+
+
+jacobi.pomp.f90  
+flint (err): can't open mpif.h as input (No such file or directory)
+flint (err): can't open mpif.h as input (No such file or directory)
+flint (err): can't open mpif.h as input (No such file or directory)
+flint (err): can't open mpif.h as input (No such file or directory)
+flint (err): can't open mpif.h as input (No such file or directory)
+
+*******************************************************************************
+      Program JACOBI_MPIOMP             File jacobi.pomp.f90      Line 2
+
+>    include 'mpif.h'
+>            ^
+jacobi.pomp.f90:JACOBI_MPIOMP line 8:
+Error #1
+flint (err): can't open mpif.h as input (No such file or directory)
+
+>    integer nbr_down, nbr_up, status(mpi_status_size), ierr
+>                                     ^
+jacobi.pomp.f90:JACOBI_MPIOMP line 20:
+Error #136
+
+>    call mpi_comm_size(mpi_comm_world,np,ierr)
+>                       ^
+jacobi.pomp.f90:JACOBI_MPIOMP line 23:
+Error #136
+
+>    nbr_down = mpi_proc_null
+>               ^
+jacobi.pomp.f90:JACOBI_MPIOMP line 26:
+Error #136
+
+>        call mpi_sendrecv(u(1,js  ),n-1,mpi_real,nbr_down,2*k-1, &
+>                                        ^
+jacobi.pomp.f90:JACOBI_MPIOMP line 54:
+Error #136
+
+jacobi.pomp.f90:JACOBI_MPIOMP line 20:
+Error #126
+
+jacobi.pomp.f90:JACOBI_MPIOMP line 26:
+Error #126
+
+jacobi.pomp.f90:JACOBI_MPIOMP line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:JACOBI_MPIOMP line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:JACOBI_MPIOMP line 77 (jacobi.f90.opari.inc):
+Error #128
+
+*******************************************************************************
+   Subroutine READ_PARAMS               File jacobi.pomp.f90      Line 139
+
+>  include 'mpif.h'
+>          ^
+jacobi.pomp.f90:READ_PARAMS line 142:
+Error #1
+flint (err): can't open mpif.h as input (No such file or directory)
+
+>    call mpi_comm_size(mpi_comm_world,np,ierr)
+>                       ^
+jacobi.pomp.f90:READ_PARAMS line 150:
+Error #136
+
+>    call mpi_bcast(ngrid,1,mpi_integer,0,mpi_comm_world,ierr)
+>                           ^
+jacobi.pomp.f90:READ_PARAMS line 166:
+Error #136
+
+>    call mpi_bcast(tol,1,mpi_real,0,mpi_comm_world,ierr)
+>                         ^
+jacobi.pomp.f90:READ_PARAMS line 168:
+Error #136
+
+jacobi.pomp.f90:READ_PARAMS line 74 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 77 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 77 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 78 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 79 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:READ_PARAMS line 147:
+Error #128
+
+*******************************************************************************
+   Subroutine GET_INDICES               File jacobi.pomp.f90      Line 183
+
+>  include 'mpif.h'
+>          ^
+jacobi.pomp.f90:GET_INDICES line 185:
+Error #1
+flint (err): can't open mpif.h as input (No such file or directory)
+
+>    call mpi_comm_size(mpi_comm_world,np,ierr)
+>                       ^
+jacobi.pomp.f90:GET_INDICES line 191:
+Error #136
+
+jacobi.pomp.f90:GET_INDICES line 74 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:GET_INDICES line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:GET_INDICES line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:GET_INDICES line 77 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:GET_INDICES line 77 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:GET_INDICES line 78 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:GET_INDICES line 79 (jacobi.f90.opari.inc):
+Error #128
+
+*******************************************************************************
+   Subroutine INIT_FIELDS               File jacobi.pomp.f90      Line 206
+
+jacobi.pomp.f90:INIT_FIELDS line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:INIT_FIELDS line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:INIT_FIELDS line 77 (jacobi.f90.opari.inc):
+Error #128
+
+*******************************************************************************
+   Subroutine SET_BC                    File jacobi.pomp.f90      Line 260
+
+>  include 'mpif.h'
+>          ^
+jacobi.pomp.f90:SET_BC line 263:
+Error #1
+flint (err): can't open mpif.h as input (No such file or directory)
+
+>    call mpi_comm_size(mpi_comm_world,np,ierr)
+>                       ^
+jacobi.pomp.f90:SET_BC line 271:
+Error #136
+
+jacobi.pomp.f90:SET_BC line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:SET_BC line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:SET_BC line 77 (jacobi.f90.opari.inc):
+Error #128
+
+*******************************************************************************
+   Subroutine COMPUTE_DIFF              File jacobi.pomp.f90      Line 362
+
+>  include 'mpif.h'
+>          ^
+jacobi.pomp.f90:COMPUTE_DIFF line 365:
+Error #1
+flint (err): can't open mpif.h as input (No such file or directory)
+
+>    call mpi_comm_size(mpi_comm_world,np,ierr)
+>                       ^
+jacobi.pomp.f90:COMPUTE_DIFF line 375:
+Error #136
+
+>    call mpi_allreduce(dnorm,diffnorm,1,mpi_real,mpi_sum,mpi_comm_world,ierr)
+>                                        ^
+jacobi.pomp.f90:COMPUTE_DIFF line 407:
+Error #136
+
+>    call mpi_allreduce(dnorm,diffnorm,1,mpi_real,mpi_sum,mpi_comm_world,ierr)
+>                                                 ^
+jacobi.pomp.f90:COMPUTE_DIFF line 407:
+Error #136
+
+jacobi.pomp.f90:COMPUTE_DIFF line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:COMPUTE_DIFF line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:COMPUTE_DIFF line 77 (jacobi.f90.opari.inc):
+Error #128
+
+*******************************************************************************
+   Subroutine POMP2_INIT_REG_432292914  File jacobi.pomp.f90      Line 413
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 74 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 75 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 76 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 77 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 77 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 78 (jacobi.f90.opari.inc):
+Error #128
+
+jacobi.pomp.f90:POMP2_INIT_REG_432292914_9 line 79 (jacobi.f90.opari.inc):
+Error #128
+
+*******************************************************************************
+

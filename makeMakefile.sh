@@ -58,9 +58,9 @@ TSPROG = $namebase-ts.exe
 SRC= $2
 CCS = scorep --user \$(CC)
 CCT = $tc
-TFLAGS="-tau_makefile=\$(TAU)/Makefile.tau-mpi-pdt-fujitsu"
+#TFLAGS="-tau_makefile=\$(TAU)/Makefile.tau-mpi-pdt-fujitsu"
 TAUCOMPINSTR="-tau_options=-optCompInst"
-SCRFLAGS="-tau_makefile=\$(TAU)/Makefile.tau-mpi-pdt-scorep-fujitsu"
+#SCRFLAGS="-tau_makefile=\$(TAU)/Makefile.tau-mpi-pdt-scorep-fujitsu"
 
 all: \$(PROG)
 
@@ -70,7 +70,7 @@ all: \$(PROG)
 tau: \$(TPROG)
 
 \$(TPROG): \$(SRC)
-	\$(info TAU native instrumentation)
+	\$(info TAU native source-based instrumentation)
 	\$(CCT) \$(TFLAGS) \$(SRC) -o \$(TPROG)
 
 tau-comp: \$(CTPROG)

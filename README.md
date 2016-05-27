@@ -1,34 +1,40 @@
 # TAU on K tests
 
 Set of sample programs and tools to test TAU installation on K.
-There are 4 test programs:
-* Fortran
-* C MPI
-* C++ MPI x2
 
-Test are for TAU native source-based instrumentation, TAU compiler-based instrumentation,
+Tests are for TAU native source-based instrumentation, TAU compiler-based instrumentation,
 and optionally for TAU instrumentation with Score-P and Score-P native instrumentation.
 
 ## Workflow
 
-1. If Makefiles are not ready,  prepare them with makeMakefile.sh.
-	! makeMakefile.sh may need editing.
-2. After Makefiles for all programs are ready, run makeAll.sh. If you need to test Score-P add targets to makeAll.sh file: tauscorep and scorep.
+1. Prepare makefiles with targets:
+- all - ordinary build
+- tau - build with TAU source-based instrumentation
+- tau-comp - build with TAU compiler-based instrumentation
+
+ Optionally with:
+- scorep - Score-P instrumentation
+- tauscorep - TAU + Score-P instrumentation
+
+2. Edit configh.sh to include tests (direcotries) and targets you want to build and test.
+E.g. For f90 (ring.f90) and mpic samples with tau and tau-comp targets config.sh should be like this:
 ```
-./makeAll.sh clean 
-./makeAll.sh 
+directs=(f90 mpic)
+targets=(clean tau tau-comp)
 ```
-It will produce exe files by number of targets in each program folder.
-3. Create jobscripts. If need to test Score-P set scorep variable inside runAll.sh.
+(It is advisable to run clean target to remove old files)
+
+
+3. Run makeAll
 ```
-./runAll.sh clean 
-./runAll.sh jobscripts
+./makeAll
 ```
-This will remove all jobscripts and profiles/traces, and create new jobscript files.
+It will produce exe files by the number of targets in each program folder.
+
+3. Prepare jobscript files. Remove old profiles and traces.
+
 4. Run test jobs.
 ```
-./runAll.sh run
+./runAll
 ```
-If all goes fine, you will find following directories with files:
-profiles, profiles_comp, trace_dir, trace_dir_comp
-and optionally with tau_scorep and scorep_sum.
+

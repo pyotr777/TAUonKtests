@@ -8,11 +8,11 @@
 #PJM --rsc-list rscgrp=small
 #PJM --stg-transfiles all
 #PJM --mpi "use-rankdir"
-#PJM --stgin "rank=* ./a.out %r:./"
+#PJM --stgin "rank=* ./jacobi.exe %r:./"
 #PJM --stgout "rank=* %r:./*.* ./"
 source /work/system/Env_base
 export FLIB_FASTOMP=false
 export OMP_NUM_THREADS=4
 
-mpiexec -np 8 ./a.out
+mpiexec -np 8 ./jacobi.exe
 ls -l

@@ -5,8 +5,11 @@
 *.out
 *.o
 *.txt
-**/Makefile
-job.*
+**/*.sh.e*
+**/*.sh.i*
+**/*.sh.o*
+**/*.sh.s*
+**/*.pomp.*
 **/*trace*/
 **/*profile*/
 test*/
