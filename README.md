@@ -4,8 +4,8 @@
 
 Set of sample programs and tools to test TAU installation on K.
 
-- Tests are for TAU native source-based instrumentation, TAU compiler-based instrumentation,
-- and optionally for TAU instrumentation with Score-P and Score-P native instrumentation.
+Tests are for TAU native source-based instrumentation, TAU compiler-based instrumentation,
+and optionally for TAU instrumentation with Score-P and Score-P native instrumentation.
 
 ## Workflow
 
