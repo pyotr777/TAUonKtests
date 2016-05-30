@@ -2,7 +2,7 @@
 ### submit from ./bin directory with "pjsub run.sh"
 #PJM -j
 #PJM --mpi proc=8
-#PJM --rsc-list node=2
+#PJM --rsc-list node=4
 #PJM --rsc-list elapse=10:0
 #PJM --rsc-list rscgrp=small
 #PJM --stg-transfiles all
@@ -21,4 +21,4 @@ export NPB_MZ_BLOAD=0 # disable load balancing with dynamic threads
 
 set -x
 
-mpiexec -np $NPROCS $EXE
+mpiexec -np $NPROCS tau_exec -ebs $EXE

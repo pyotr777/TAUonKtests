@@ -29,11 +29,11 @@ OPENMP	= -Kopenmp	# Fujitsu compiler
 #---------------------------------------------------------------------------
 # The fortran compiler used for hybrid MPI programs
 #---------------------------------------------------------------------------
-#MPIF77 = mpifrtpx
+MPIF77 = mpifrtpx
 
 # Alternative variants to perform instrumentation
 #MPIF77 = scalasca -instrument  mpifrtpx
-MPIF77 = tau_f90.sh
+#MPIF77 = tau_f90.sh
 #MPIF77 = vtf77 -vt:hyb -vt:f77  mpifrtpx
 #MPIF77 = scorep --user  mpifrtpx
 

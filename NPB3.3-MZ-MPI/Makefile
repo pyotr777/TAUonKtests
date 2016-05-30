@@ -1,8 +1,31 @@
+# Modified Makefile
+# Use environment variable NPB_TEST to switch tests,
+# and use make targets to switch ordinary/instrumented builds.
+
 SHELL=/bin/sh
 CLASS=W
 NPROCS=1
 VERSION=
 SFILE=config/suite.def
+
+
+all: makefile_org suite
+
+makefile_org:
+	$(info Building without instrumentation)
+	cp config/make.def.org config/make.def
+
+tau: makefile_tau suite
+
+makefile_tau:
+	$(info Building with TAU source-based instrumentation)
+	cp config/make.def.tau config/make.def
+
+tau-comp: makefile_tau_comp suite
+
+makefile_tau_comp:
+	$(info Building with TAU compiler-based instrumentation)
+	cp config/make.def.tau-comp config/make.def
 
 default: header
 	@ sys/print_instructions

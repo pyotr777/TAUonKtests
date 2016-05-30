@@ -13,4 +13,5 @@
 **/*trace*/
 **/*profile*/
 test*/
-
+**/penmp
+**/*.8
