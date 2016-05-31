@@ -10,8 +10,10 @@
 **/*.sh.o*
 **/*.sh.s*
 **/*.pomp.*
-**/*trace*/
-**/*profile*/
+**/trace*
+**/profile*
+**/tau*
+**/events*
 test*/
 **/penmp
 **/*.8
