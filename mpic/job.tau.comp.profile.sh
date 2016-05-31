@@ -6,7 +6,7 @@
 #PJM --stg-transfiles all
 #PJM --mpi "use-rankdir"
 #PJM --stgin "rank=* ./C_MPI-comp.exe %r:./"
-#PJM --stgout "rank=* ./profile* ./TAU_comp_profiles/"
+#PJM --stgout "rank=* ./*.xml ./TAU_comp_profiles/"
 . /work/system/Env_base
 export TAU_PROFILE=1
 export TAU_TRACE=0

@@ -7,7 +7,7 @@
 #PJM --mpi "use-rankdir"
 #PJM --stgin "rank=* ./jacobi-comp.exe %r:./"
 #PJM --stgin "rank=* ./indata %r:./"
-#PJM --stgout "rank=* ./* ./TAU_comp_profiles/"
+#PJM --stgout "rank=* ./*.xml ./TAU_comp_profiles/"
 . /work/system/Env_base
 export FLIB_FASTOMP=false
 export OMP_NUM_THREADS=4
