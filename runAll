@@ -30,7 +30,7 @@ EOF
 
 if [ "$#" -lt 1 ]; then
     echo "$usage"
-else 
+else
     jobfile_pattern="$1"
     echo "Jobscript pattern: \"$jobfile_pattern\"."
 fi

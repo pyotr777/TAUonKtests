@@ -10,6 +10,7 @@
 . /work/system/Env_base
 export TAU_PROFILE="1"
 export TAU_TRACE="0"
+export TAU_PROFILE_FORMAT=merged
 pwd
 ls -la
 env | grep -i tau
