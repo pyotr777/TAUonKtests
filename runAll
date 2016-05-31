@@ -4,24 +4,51 @@
 #
 # 2015-2016 Bryzgalov Peter @ RIKEN AICS
 
-
 source ./config.sh
+
+jobfile_pattern="job.*.sh"
+CURDIR="$(pwd)"
 
 # Set to nonzero to run Score-P instrumented jobs
 pause=15
 
 read -rd '' usage << EOF
-Execute profiling and tracing jobs on K
-from designated directories.
+Submit profiling and tracing jobs on K from directories designated in config.sh file.
 (C) 2015-2016 Bryzgalov Peter @ RIKEN AICS
+
+Usage:
+runAll [filename_pattern]
+
+filename_pattern - optional jobscript filename pattern. 
+                   Jobscript files that match this pattern will be submitted. 
+                   Default is "$( echo "$jobfile_pattern")".
 
 directories: $(echo "${directs[*]}")
 Score-P is $( if [ -z "$scorep" ];then echo "not "; fi)used.
+    
 EOF
 
-echo "$usage"
+if [ "$#" -lt 1 ]; then
+    echo "$usage"
+else 
+    jobfile_pattern="$1"
+    echo "Jobscript pattern: \"$jobfile_pattern\"."
+fi
 
-read -r -p "This will run a set of test jobs for testing TAU. Continue? [Y/n] " input
+echo ""
+echo "The following jobscripts will be submitted:"
+for dir in ${directs[@]}; do
+    cd $dir
+    mapfile -t jobfiles <<< "$(ls $jobfile_pattern 2>/dev/null)"
+    for jobfile in "${jobfiles[@]}"; do
+        echo "$dir/$jobfile"
+    done
+    cd ..
+done
+cd $CURDIR
+
+
+read -r -p "Submit these jobs? [Y/n] " input
 case $input in
     [yY][eE][sS]|[yY])
         echo "Starting..."
@@ -42,7 +69,7 @@ function containsElement {
 
 for dir in ${directs[@]}; do
     cd $dir
-    mapfile -t jobfiles <<< "$(ls job.*.sh)"
+    mapfile -t jobfiles <<< "$(ls $jobfile_pattern)"
     for jobfile in "${jobfiles[@]}"; do
         echo "Run $dir/$jobfile"
         pjsub $jobfile
