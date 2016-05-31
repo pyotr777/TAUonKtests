@@ -51,4 +51,4 @@ clean:
 	rm *.o *.sh.o* *.sh.s* *.sh.e* *.sh.i* profile* trace* event* *.log
 
 cleanall: 
-	rm -rf *.exe *.o* *.i* *.sh.e* *.sh.i* *.sh.o* *.sh.s* *script.e* *script.i* *script.s* *profile* *trace* events* *.log *file_for_script *.edf *.slog2 *.trc job*.*
+	rm *.exe *.o* *.i* *.sh.e* *.sh.i* *.sh.o* *.sh.s* *script.e* *script.i* *script.s* profile* tautrace* events* *.log *file_for_script *.edf *.slog2 *.trc
