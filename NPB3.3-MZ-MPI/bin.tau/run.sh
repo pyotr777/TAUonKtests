@@ -2,7 +2,7 @@
 ### submit from ./bin directory with "pjsub run.sh"
 #PJM -j
 #PJM --mpi proc=8
-#PJM --rsc-list node=2
+#PJM --rsc-list node=4
 #PJM --rsc-list elapse=10:0
 #PJM --rsc-list rscgrp=small
 #PJM --stg-transfiles all

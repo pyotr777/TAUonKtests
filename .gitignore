@@ -4,7 +4,9 @@
 *.exe
 *.out
 *.o
+*.h
 *.txt
+*.def
 **/*.sh.e*
 **/*.sh.i*
 **/*.sh.o*
